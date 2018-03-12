@@ -1,0 +1,49 @@
+.footer {
+  display: grid;
+  background-color: #000;
+  color: $lightBlue;
+  padding: .5rem;
+  font-size: .8rem;
+  text-align: center;
+
+  a {
+    color: $lightBlue;
+    text-decoration: none;
+
+    &:hover {
+      color: $melon;
+    }
+  }
+
+  .copy div{
+    line-height: 2rem;
+    font-size: .6rem;
+  }
+
+  .social li {
+    display: inline-block;
+    font-size: 1.5rem;
+    padding: .2rem;
+  }
+
+  .social ul {
+    text-align: center;
+    align-self: center;
+    margin: .5rem 0;
+  }
+
+  nav {
+    line-height: 1.5rem;
+    margin-bottom: .5rem;
+
+    li {
+      display: inline-block;
+      margin: 0 .5rem;
+    }
+  }
+
+  .logo img{
+    margin-top: .5rem;
+    max-width: 10rem;
+  }
+}

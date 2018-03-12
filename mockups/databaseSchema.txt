@@ -1,0 +1,17 @@
+- categories
+  - id
+  - name
+  - description
+  - image_id
+  - sort_order
+
+- images
+  - id
+  - path
+  - caption
+  - meta_data
+
+- category_images
+  - category_id
+  - image_id
+  - sort_order
