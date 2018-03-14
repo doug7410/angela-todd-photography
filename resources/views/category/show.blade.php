@@ -1,32 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="category">
-  <div class="category-heading">
-    <h1>Landscapes</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+  <div class="category">
+    <div class="category-heading">
+      <h1>{{ $category->name }}</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    </div>
+    <div class="items">
+      @foreach($category->images as $image)
+        <a href="#" class="item" @click.prevent="showModal('{{$image->path}}')">
+          <img src="{{$image->path}}" alt="{{$image->caption}}">
+          <small>{{$image->caption}}</small>
+        </a>
+      @endforeach
+    </div>
+    <photo-modal :images="{{json_encode($category->images->toArray())}}" :initial-image-id="3"></photo-modal>
   </div>
-  <div class="items">
-    <div class="item item-1">
-      <a href="portfolioModal.html">
-        <small>This is some short description. Lorem ipsum bla bla.</small>
-      </a>
-    </div>
-    <div class="item item-2">
-      <small>This is some short description. Lorem ipsum bla bla.</small>
-    </div>
-    <div class="item item-3">
-      <small>This is some short description. Lorem ipsum bla bla.</small>
-    </div>
-    <div class="item item-4">
-      <small>This is some short description. Lorem ipsum bla bla.</small>
-    </div>
-    <div class="item item-5">
-      <small>This is some short description. Lorem ipsum bla bla.</small>
-    </div>
-    <div class="item item-6">
-      <small>This is some short description. Lorem ipsum bla bla.</small>
-    </div>
-  </div>
-</div>
 @endsection

@@ -11,4 +11,8 @@ class Category extends Model
     public function image() {
         return $this->belongsTo(Image::class);
     }
+
+    public function images() {
+        return $this->belongsToMany(Image::class)->withPivot('category_sort_order');
+    }
 }

@@ -502,9 +502,9 @@ header a:hover {
   color: #F0FDFD;
   position: relative;
   z-index: 1;
-  height: 0;
-  padding-top: 75%;
+  height: 15rem;
   overflow: hidden;
+  display: block;
 }
 
 @media screen and (min-width: 451px) {
@@ -513,13 +513,14 @@ header a:hover {
   }
 }
 
-.category .item::before {
+.category .item img {
   content: "";
   position: absolute;
-  top: -2%;
-  left: 0;
-  width: 100%;
-  height: 102%;
+  top: 48%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  height: 104%;
   z-index: -1;
   background-size: cover;
   background-position: center;
@@ -531,9 +532,8 @@ header a:hover {
   cursor: pointer;
 }
 
-.category .item:hover::before {
-  -webkit-transform: translate(0px, 0.5rem);
-          transform: translate(0px, 0.5rem);
+.category .item:hover img {
+  top: 50%;
 }
 
 .category .item:hover small {
@@ -558,30 +558,6 @@ header a:hover {
   transition: .3s;
   line-height: 1.5rem;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-}
-
-.category .item-1::before {
-  background-image: url(/images/tunnel_view.jpg?f2fa6cc1c3e3be36f88be5c82c329a84);
-}
-
-.category .item-2::before {
-  background-image: url(/images/02_bg.jpg?c84fb848a752d09b6863c8eddb2a6c57);
-}
-
-.category .item-3::before {
-  background-image: url(/images/03_bg.jpg?4a8b7df1852016405aed7ce78c5908bb);
-}
-
-.category .item-4::before {
-  background-image: url(/images/04_bg.jpg?7310e5e5dbd14b084a9b1e5077635f31);
-}
-
-.category .item-5::before {
-  background-image: url(/images/05_bg.jpg?827d40d1bb1caa869bebe2154d7f1a03);
-}
-
-.category .item-6::before {
-  background-image: url(/images/06_bg.jpg?54c226d2e6df312e79ae88a72e81bd6c);
 }
 
 .footer {
@@ -666,7 +642,7 @@ header a:hover {
   margin: 1rem auto;
 }
 
-.modal {
+.photo-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -681,7 +657,7 @@ header a:hover {
       justify-content: space-around;
 }
 
-.modal-content {
+.photo-modal-content {
   position: relative;
   background-color: #ffffff;
   width: 80%;
@@ -691,7 +667,6 @@ header a:hover {
   -ms-flex-item-align: center;
       align-self: center;
   border-radius: 3px;
-  background-image: url(/images/tunnel_view.jpg?f2fa6cc1c3e3be36f88be5c82c329a84);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -707,14 +682,14 @@ header a:hover {
           justify-content: center;
 }
 
-.modal-nav {
+.photo-modal-nav {
   -ms-flex-item-align: center;
       align-self: center;
   font-size: 5rem;
   color: #93979B;
 }
 
-.modal-info {
+.photo-modal-info {
   position: absolute;
   bottom: 1rem;
   right: 1rem;
@@ -722,7 +697,7 @@ header a:hover {
   font-size: 1.8rem;
 }
 
-.modal-close {
+.photo-modal-close {
   position: absolute;
   top: 1rem;
   color: #93979B;
@@ -730,7 +705,7 @@ header a:hover {
   font-weight: bold;
 }
 
-.modal .meta-data {
+.photo-modal .meta-data {
   background-color: rgba(255, 255, 255, 0.75);
   width: 50%;
   border: solid 1px #93979B;
@@ -744,28 +719,28 @@ header a:hover {
   position: relative;
 }
 
-.modal .meta-data h2 {
+.photo-modal .meta-data h2 {
   text-transform: uppercase;
   margin: 0 0 .3rem 0;
 }
 
-.modal .meta-data table {
+.photo-modal .meta-data table {
   margin-top: .5rem;
   width: 100%;
   font-size: .9rem;
 }
 
-.modal .meta-data th,
-.modal .meta-data td {
+.photo-modal .meta-data th,
+.photo-modal .meta-data td {
   border: solid 1px #93979B;
   padding: .5rem;
 }
 
-.modal .meta-data th {
+.photo-modal .meta-data th {
   text-align: right;
 }
 
-.modal .meta-data-close {
+.photo-modal .meta-data-close {
   position: absolute;
   top: 1rem;
   right: 1rem;

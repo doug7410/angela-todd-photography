@@ -13,10 +13,4 @@
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/category/{id}', function () {
-    return view('category.show');
-});
-
-Route::get('/about', function () {
-    return view('about');
-});
+Route::get('/category/{id}', 'CategoryController@show');

@@ -1,4 +1,4 @@
-.modal {
+.photo-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -18,7 +18,7 @@
     border: solid 1px $dark;
     align-self: center;
     border-radius: 3px;
-    background-image: url("../images/tunnel_view.jpg");
+    //background-image: url("../images/tunnel_view.jpg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
