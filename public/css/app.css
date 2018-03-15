@@ -236,8 +236,8 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-top: 4rem;
   margin-bottom: .5rem;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 500px) {
@@ -331,13 +331,6 @@ header a.active {
 
 header a:hover {
   color: #F7BCAE;
-}
-
-.banner-container {
-  background: url(/images/01_bg.jpg?8da47b198d11013eafb641e318e7846b) center no-repeat;
-  background-size: cover;
-  height: 35rem;
-  width: 100%;
 }
 
 .portfolio {

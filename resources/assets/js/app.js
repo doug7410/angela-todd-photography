@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import PhotoModal from './components/PhotoModal.vue'
+import Carousel from './components/Carousel.vue'
 
 const app = new Vue({
   el: '#app',
@@ -7,7 +8,8 @@ const app = new Vue({
     currentImageId: null
   },
   components: {
-    PhotoModal
+    PhotoModal,
+    Carousel
   },
   methods: {
     setCurrentImageId(id) {

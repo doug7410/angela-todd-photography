@@ -1,11 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="banner-container">
-  <div class="carousel"></div>
-</div>
-<div class="portfolio">
+<carousel></carousel>
 
+<div class="portfolio">
   <h1>Portfolio</h1>
   <div class="items">
     @foreach($categories as $category)
