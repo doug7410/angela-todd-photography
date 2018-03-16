@@ -8,11 +8,11 @@
       }"
       tag="div">
       <div
-        v-for="slide in slides"
+        v-for="image in images"
         class='slide'
-        :key="slide.id"
+        :key="image.id"
         :style="{
-          backgroundImage: `url(../../images/${slide.url})`,
+          backgroundImage: `url(${image.path})`,
           height: `${carouselHeight}px`
         }">
       </div>
@@ -32,36 +32,15 @@
   export default {
     data () {
       return {
-        slides: [
-          {
-            url: '01_bg.jpg',
-            id: 1
-          },
-          {
-            url: '02_bg.jpg',
-            id: 2
-          },
-          {
-            url: '03_bg.jpg',
-            id: 3
-          },
-          {
-            url: '04_bg.jpg',
-            id: 4
-          },
-          {
-            url: '05_bg.jpg',
-            id: 5
-          }
-        ]
+        images: JSON.parse(this.slides)
       }
     },
     props: {
-      images: Array
+      slides: String
     },
     computed: {
       carouselWidth() {
-        return window.innerWidth * this.slides.length
+        return window.innerWidth * this.images.length
       },
       carouselHeight() {
         if(window.innerWidth < 670) {
@@ -72,13 +51,16 @@
     },
     methods: {
       next () {
-        const first = this.slides.shift()
-        this.slides = this.slides.concat(first)
+        const first = this.images.shift()
+        this.images = this.images.concat(first)
       },
       previous () {
-        const last = this.slides.pop()
-        this.slides = [last].concat(this.slides)
+        const last = this.images.pop()
+        this.images = [last].concat(this.images)
       }
+    },
+    mounted() {
+      console.log(this.images)
     }
   }
 </script>

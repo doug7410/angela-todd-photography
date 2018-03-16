@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<carousel></carousel>
+<carousel slides="{{$slides}}"></carousel>
 
 <div class="portfolio">
   <h1>Portfolio</h1>

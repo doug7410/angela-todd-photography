@@ -676,31 +676,16 @@ function normalizeComponent (
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
     return {
-      slides: [{
-        url: '01_bg.jpg',
-        id: 1
-      }, {
-        url: '02_bg.jpg',
-        id: 2
-      }, {
-        url: '03_bg.jpg',
-        id: 3
-      }, {
-        url: '04_bg.jpg',
-        id: 4
-      }, {
-        url: '05_bg.jpg',
-        id: 5
-      }]
+      images: JSON.parse(this.slides)
     };
   },
 
   props: {
-    images: Array
+    slides: String
   },
   computed: {
     carouselWidth: function carouselWidth() {
-      return window.innerWidth * this.slides.length;
+      return window.innerWidth * this.images.length;
     },
     carouselHeight: function carouselHeight() {
       if (window.innerWidth < 670) {
@@ -711,13 +696,16 @@ function normalizeComponent (
   },
   methods: {
     next: function next() {
-      var first = this.slides.shift();
-      this.slides = this.slides.concat(first);
+      var first = this.images.shift();
+      this.images = this.images.concat(first);
     },
     previous: function previous() {
-      var last = this.slides.pop();
-      this.slides = [last].concat(this.slides);
+      var last = this.images.pop();
+      this.images = [last].concat(this.images);
     }
+  },
+  mounted: function mounted() {
+    console.log(this.images);
   }
 });
 
@@ -29546,12 +29534,12 @@ var render = function() {
           },
           attrs: { tag: "div" }
         },
-        _vm._l(_vm.slides, function(slide) {
+        _vm._l(_vm.images, function(image) {
           return _c("div", {
-            key: slide.id,
+            key: image.id,
             staticClass: "slide",
             style: {
-              backgroundImage: "url(../../images/" + slide.url + ")",
+              backgroundImage: "url(" + image.path + ")",
               height: _vm.carouselHeight + "px"
             }
           })
