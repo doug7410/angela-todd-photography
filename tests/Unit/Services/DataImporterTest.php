@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Tests\Integration;
 
 use Tests\TestCase;
 use App\Jobs\ImportImage;
@@ -15,7 +15,7 @@ class DataImporterTest extends TestCase
 
   public function setUp() {
     parent::setUp();
-    $this->sampleFile = realpath(__DIR__ . '/../sampleData.csv');
+    $this->sampleFile = realpath(__DIR__ . '/../../sampleData.csv');
   }
 
   /**
@@ -36,12 +36,12 @@ class DataImporterTest extends TestCase
     $this->assertInstanceOf(DataImporter::class, $importer);
 
     $importer->createCategories();
-//
-//    $this->assertDatabaseHas('categories', ['name' => 'landscape', 'sort_order' => 1]);
-//    $this->assertDatabaseHas('categories', ['name' => 'portrait', 'sort_order' => 2]);
-//    $this->assertDatabaseHas('categories', ['name' => 'black and white', 'sort_order' => 3]);
-//    $this->assertDatabaseHas('categories', ['name' => 'HDR', 'sort_order' => 4]);
-//    $this->assertDatabaseHas('categories', ['name' => 'Still Life', 'sort_order' => 5]);
+
+    $this->assertDatabaseHas('categories', ['name' => 'landscape', 'sort_order' => 1]);
+    $this->assertDatabaseHas('categories', ['name' => 'portrait', 'sort_order' => 2]);
+    $this->assertDatabaseHas('categories', ['name' => 'black and white', 'sort_order' => 3]);
+    $this->assertDatabaseHas('categories', ['name' => 'HDR', 'sort_order' => 4]);
+    $this->assertDatabaseHas('categories', ['name' => 'Still Life', 'sort_order' => 5]);
   }
 
   /**
