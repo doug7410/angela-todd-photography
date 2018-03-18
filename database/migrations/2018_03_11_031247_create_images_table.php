@@ -17,7 +17,7 @@ class CreateImagesTable extends Migration
             $table->increments('id');
             $table->string('path');
             $table->string('caption');
-            $table->longText('meta_data');
+            $table->longText('meta_data')->nullable();
             $table->timestamps();
         });
     }

@@ -13,8 +13,12 @@ class HomeController extends Controller
    */
   public function index()
   {
+    $categories = Category::with('image')->orderBy('sort_order')->get();
+    $filteredCategories = $categories->filter(function($category){
+      return $category->images->count() > 0;
+    });
     return view('home', [
-      'categories' => Category::with('image')->orderBy('sort_order')->get(),
+      'categories' => $filteredCategories,
       'slides' => Slide::with('image')->orderBy('sort_order')->get()->map(function($slide) {
         return ['id' => $slide['image']['id'], 'path' => $slide['image']['path']];
       })

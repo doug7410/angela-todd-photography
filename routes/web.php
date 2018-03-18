@@ -11,6 +11,28 @@
 |
 */
 
+use App\Jobs\ImportImage;
+use Cloudinary\Uploader;
+use Illuminate\Filesystem\FilesystemManager;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
+
 Route::get('/', 'HomeController@index');
 
 Route::get('/category/{id}', 'CategoryController@show');
+
+Route::get('/test', function () {
+  $image = [
+    'file' => 'Title.jpg',
+    'caption' => 'Some cool places',
+    'categories' => [
+      ['name' => 'landscape', 'sort_order' => 1],
+      ['name' => 'portrait', 'sort_order' => 1]
+    ],
+    'slider' => 1
+  ];
+
+  $i = ImportImage::dispatch($image);
+
+  return \response()->json($i);
+});

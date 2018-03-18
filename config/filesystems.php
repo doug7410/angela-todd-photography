@@ -1,5 +1,4 @@
 <?php
-
 return [
 
     /*
@@ -62,6 +61,13 @@ return [
             'region' => env('AWS_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
+        ],
+
+        'dropbox' => [
+          'driver' => env('APP_ENV') == 'testing' ? 'local' : 'dropbox',
+          'root' => env('APP_ENV') == 'testing' ? storage_path('app') : null,
+          'app_secret' => '9gk0ff9bhovq29v',
+          'token' => 'DsGDNDSYfiAAAAAAAAAERh9tS-qLYXRoXJFFA0zQ6YdDeEIiLIj6oplIDYHSTTVv',
         ],
 
     ],
