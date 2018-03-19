@@ -170,6 +170,8 @@
       align-self: center;
       overflow: scroll;
       position: relative;
+      color: #000;
+
 
       h2 {
         text-transform: uppercase;
