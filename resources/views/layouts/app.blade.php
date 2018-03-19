@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Angela Todd Photography</title>
-  <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
+  <link rel="stylesheet" href="{{ secure_asset('/css/app.css') }}">
   <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 </head>
 <body>
@@ -16,7 +16,7 @@
 
 @include('partials.footer')
 
-<script src="{{ asset('/js/app.js') }}"></script>
+<script src="{{ secure_asset('/js/app.js') }}"></script>
 </body>
 </html>
 
