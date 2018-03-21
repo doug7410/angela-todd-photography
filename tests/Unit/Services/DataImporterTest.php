@@ -2,6 +2,7 @@
 
 namespace Tests\Integration;
 
+use App\Category;
 use Tests\TestCase;
 use App\Jobs\ImportImage;
 use App\Services\DataImporter;
@@ -21,7 +22,7 @@ class DataImporterTest extends TestCase
   /**
    * @test
    */
-  public function hasReferenceToTheFilePath()
+  public function has_reference_to_the_file_path()
   {
     $importer = new DataImporter($this->sampleFile);
 
@@ -31,23 +32,37 @@ class DataImporterTest extends TestCase
   /**
    * @test
    */
-  public function createsCategoryForEachCategoryInTheFile() {
+  public function creates_category_for_each_category_in_the_file() {
     $importer = new DataImporter($this->sampleFile);
     $this->assertInstanceOf(DataImporter::class, $importer);
 
     $importer->createCategories();
 
-    $this->assertDatabaseHas('categories', ['name' => 'landscape', 'sort_order' => 1]);
-    $this->assertDatabaseHas('categories', ['name' => 'portrait', 'sort_order' => 2]);
-    $this->assertDatabaseHas('categories', ['name' => 'black and white', 'sort_order' => 3]);
-    $this->assertDatabaseHas('categories', ['name' => 'HDR', 'sort_order' => 4]);
-    $this->assertDatabaseHas('categories', ['name' => 'Still Life', 'sort_order' => 5]);
+    $this->assertDatabaseHas('categories', ['name' => 'landscape', 'description' => 'Landscape Photos', 'sort_order' => 1]);
+    $this->assertDatabaseHas('categories', ['name' => 'portrait', 'description' => 'Some Great Portraits','sort_order' => 2]);
+    $this->assertDatabaseHas('categories', ['name' => 'black and white', 'description' => 'It\'s all about the lighting','sort_order' => 3]);
+    $this->assertDatabaseHas('categories', ['name' => 'HDR', 'description' => 'Super High Def','sort_order' => 4]);
+    $this->assertDatabaseHas('categories', ['name' => 'Still Life', 'description' => 'Be still','sort_order' => 5]);
   }
 
   /**
    * @test
    */
-  public function createdAQueueJobForEachImage()
+  public function does_not_create_categories_if_they_already_exist()
+  {
+    factory(Category::class)->create(['name' => 'landscape']);
+    $importer = new DataImporter($this->sampleFile);
+    $this->assertInstanceOf(DataImporter::class, $importer);
+
+    $importer->createCategories();
+
+    $this->assertEquals(1, Category::where(['name' => 'landscape'])->count());
+  }
+
+  /**
+   * @test
+   */
+  public function created_a_queue_job_for_each_image()
   {
     Queue::fake();
     $importer = new DataImporter($this->sampleFile);

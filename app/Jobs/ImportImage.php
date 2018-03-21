@@ -34,40 +34,47 @@ class ImportImage implements ShouldQueue
 
   public function handle()
   {
-    Log::info('Importing Image '. $this->image['file']. '...');
-    
-    $imageUpload = $this->cloudinaryService->upload(
-      realpath($this->imagesFolder . $this->image['file']),
-      config('cloudinary.upload')
-    );
+    $image = Image::where('image_name', $this->image['file'])->first();
 
-    $image = Image::create([
-      'path' => $imageUpload['url'],
-      'caption' => $this->image['caption'],
-      'meta_data' => json_encode($imageUpload['image_metadata'])
-    ]);
+    Log::info('Importing Image ' . $this->image['file'] . '...');
+
+    if (!$image) {
+      $imageUpload = $this->cloudinaryService->upload(
+        realpath($this->imagesFolder . $this->image['file']),
+        config('cloudinary.upload')
+      );
+
+      $image = Image::create([
+        'image_name' => $this->image['file'],
+        'path' => $imageUpload['url'],
+        'caption' => $this->image['caption'],
+        'meta_data' => json_encode($imageUpload['image_metadata'])
+      ]);
+    } else {
+      if($image->caption !== $this->image['caption']) {
+        $image->caption = $this->image['caption'];
+        $image->save();
+      }
+    }
+
 
     foreach ($this->image['categories'] as $imageCategory) {
       $category = Category::where('name', $imageCategory['name'])->first();
-      CategoryImage::create([
-        'category_id' => $category->id,
-        'image_id' => $image->id,
-        'category_sort_order' => $imageCategory['sort_order']
-      ]);
+      $category->images()->sync([$image->id => ['category_sort_order' => $imageCategory['sort_order']]]);
 
-      if($imageCategory['sort_order'] == 1) {
+      if ($imageCategory['sort_order'] == 1) {
         $category->image_id = $image->id;
         $category->save();
       }
     }
 
-    if($this->image['slider']) {
+    if ($this->image['slider']) {
       Slide::create([
         'image_id' => $image->id,
         'sort_order' => $this->image['slider']
       ]);
     }
 
-    Log::info('ImportImage successfully finished for: '. $imageUpload['url']);
+    Log::info('ImportImage successfully finished for: ' . $image['file']);
   }
 }

@@ -42,17 +42,18 @@ class ImportImageTest extends TestCase
 
   public function tearDown()
   {
+    parent::tearDown();
     m::close();
   }
 
   /**
-  * @test
-  */
+   * @test
+   */
   public function uploads_image_to_cloudinary_and_creates_associated_database_records()
   {
     $imagesFolder = __DIR__ . '/../../../../For the Website/';
 
-    $imagePath = realpath($imagesFolder.$this->image['file']);
+    $imagePath = realpath($imagesFolder . $this->image['file']);
     $cloudinaryService = m::mock('cloudinaryService');
     $cloudinaryService->shouldReceive('upload')->withArgs([$imagePath, config('cloudinary.upload')])->andReturn(
       [
@@ -70,6 +71,7 @@ class ImportImageTest extends TestCase
     $importer->handle();
 
     $this->assertDatabaseHas('images', [
+      'image_name' => '123.jpg',
       'path' => 'http://res.cloudinary.com/dsteinberg/image/upload/v1521386006/oihqt9g9e7ocanpbhocy.jpg',
       'caption' => 'Some cool places',
       'meta_data' => json_encode([
@@ -102,5 +104,51 @@ class ImportImageTest extends TestCase
       'image_id' => $image->id,
       'sort_order' => 1
     ]);
+  }
+
+  /**
+   * @test
+   */
+  public function updates_existing_image_data_and_does_not_upload()
+  {
+    factory(Image::class)->create([
+      'image_name' => '123.jpg',
+      'path' => '/some/foo/image.jpg',
+      'caption' => 'Some cool places 1234',
+      'meta_data' => json_encode([
+        'CodedCharacterSet' => 'UTF8',
+        'ApplicationRecordVersion' => '4',
+        'TimeCreated' => '13:04:31+00:00',
+        'DigitalCreationDate' => '2015:08:12',
+        'PhotometricInterpretation' => 'RGB'
+      ])
+    ]);
+
+    $cloudinaryService = m::mock('cloudinaryService');
+    $cloudinaryService->shouldNotHaveReceived('upload');
+
+    $importer = new ImportImage($this->image, $cloudinaryService);
+    $importer->handle();
+
+    $this->assertDatabaseHas('images', [
+      'image_name' => '123.jpg',
+      'path' => '/some/foo/image.jpg',
+      'caption' => 'Some cool places',
+      'meta_data' => json_encode([
+        'CodedCharacterSet' => 'UTF8',
+        'ApplicationRecordVersion' => '4',
+        'TimeCreated' => '13:04:31+00:00',
+        'DigitalCreationDate' => '2015:08:12',
+        'PhotometricInterpretation' => 'RGB'
+      ])
+    ]);
+  }
+
+  /**
+   * @test
+   */
+  public function deletes_existing_image_record_if_not()
+  {
+
   }
 }
