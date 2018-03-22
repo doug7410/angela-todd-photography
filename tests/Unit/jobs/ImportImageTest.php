@@ -144,11 +144,4 @@ class ImportImageTest extends TestCase
     ]);
   }
 
-  /**
-   * @test
-   */
-  public function deletes_existing_image_record_if_not()
-  {
-
-  }
 }

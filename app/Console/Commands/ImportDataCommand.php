@@ -38,7 +38,7 @@ class ImportDataCommand extends Command
      */
     public function handle()
     {
-      $importer = new DataImporter(__DIR__.'/importData.csv');
+      $importer = new DataImporter(__DIR__.'/../../../../For the Website/data.csv');
       $importer->createCategories();
       $importer->dispatchImportImageJobs();
     }
