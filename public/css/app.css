@@ -506,7 +506,6 @@ header a:hover {
 }
 
 .category .item img {
-  content: "";
   position: absolute;
   top: 48%;
   left: 50%;

@@ -1,3 +1,5 @@
+@import "colors";
+
 .category {
   padding: .5rem;
 
@@ -43,7 +45,6 @@
     }
 
     img {
-      content: "";
       position: absolute;
       top: 48%;
       left: 50%;
