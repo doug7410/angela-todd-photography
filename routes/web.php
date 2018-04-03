@@ -11,7 +11,7 @@
 |
 */
 
-use App\Jobs\ImportImage;
+use App\Jobs\UploadImageJob;
 use Cloudinary\Uploader;
 use Illuminate\Filesystem\FilesystemManager;
 use Illuminate\Http\Response;
@@ -32,7 +32,7 @@ Route::get('/test', function () {
     'slider' => 1
   ];
 
-  $i = ImportImage::dispatch($image);
+  $i = UploadImageJob::dispatch($image);
 
   return \response()->json($i);
 });

@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Category;
-use App\Jobs\ImportImage;
+use App\Jobs\UploadImageJob;
 use Illuminate\Support\Facades\Log;
 
 class DataImporter
@@ -48,7 +48,7 @@ class DataImporter
   {
     foreach (explode("\n", file_get_contents($this->filePath)) as $index => $line) {
       if ($index > 1) {
-        ImportImage::dispatch($this->parseLine($line));
+        UploadImageJob::dispatch($this->parseLine($line));
         Log::info('dispatched ImportImage job for "' . $line . '"');
       }
     }

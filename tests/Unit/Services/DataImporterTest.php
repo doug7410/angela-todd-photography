@@ -4,7 +4,7 @@ namespace Tests\Integration;
 
 use App\Category;
 use Tests\TestCase;
-use App\Jobs\ImportImage;
+use App\Jobs\UploadImageJob;
 use App\Services\DataImporter;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -68,8 +68,8 @@ class DataImporterTest extends TestCase
     $importer = new DataImporter($this->sampleFile);
     $importer->dispatchImportImageJobs();
 
-    Queue::assertPushed(ImportImage::class, 4);
-    Queue::assertPushed(ImportImage::class, function ($job) {
+    Queue::assertPushed(UploadImageJob::class, 4);
+    Queue::assertPushed(UploadImageJob::class, function ($job) {
       return $job->image == [
         'file' => 'blackbeach.jpg',
         'caption' => 'Black Sand beach in Iceland',
@@ -79,7 +79,7 @@ class DataImporterTest extends TestCase
         'slider' => 1
       ];
     });
-    Queue::assertPushed(ImportImage::class, function ($job) {
+    Queue::assertPushed(UploadImageJob::class, function ($job) {
       return $job->image == [
           'file' => 'valley.jpg',
           'caption' => 'Tunnel View',
