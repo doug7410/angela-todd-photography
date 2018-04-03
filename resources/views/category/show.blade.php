@@ -4,7 +4,7 @@
   <div class="category">
     <div class="category-heading">
       <h1>{{ $category->name }}</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      <p>{{ $category->description }}</p>
     </div>
     <div class="items">
       @foreach($category->images as $image)

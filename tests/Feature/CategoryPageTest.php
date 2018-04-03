@@ -14,12 +14,13 @@ class CategoryPageTest  extends TestCase
     /**
      * @test
      */
-    public function visitingTheCategoryPageShowsTheCorrectCategoryName()
+    public function visitingTheCategoryPageShowsTheCorrectCategoryNameAndDescription()
     {
         $category = factory(Category::class)->create(['name' => 'Foo Category Name']);
         $response = $this->get("/category/$category->id");
         $response->assertStatus(200);
         $response->assertSee($category->name);
+        $response->assertSee($category->description);
     }
 
     /**
