@@ -36,8 +36,8 @@
     overflow: hidden;
     display: block;
 
-    @media screen and (min-width: 451px) {
-      padding-top: 100%;
+    @media screen and (max-width: 480px) {
+      height: 20rem;
     }
 
     img {
