@@ -97,11 +97,11 @@ class DataImporterTest extends TestCase
   public function parses_a_line_to_the_correct_format_for_the_ImportImage_job()
   {
     $importer = new DataImporter($this->sampleFile);
-    $res = $importer->parseLine('123.jpg,Some cool places,1,1,,,,1');
+    $res = $importer->parseLine('123.jpg,"Some cool, places",1,1,,,,1');
 
     $this->assertArraySubset([
       'file' => '123.jpg',
-      'caption' => 'Some cool places',
+      'caption' => 'Some cool, places',
       'categories' => [
         ['name' => 'landscape', 'sort_order' => 1],
         ['name' => 'portrait', 'sort_order' => 1]

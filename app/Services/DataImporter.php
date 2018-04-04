@@ -48,8 +48,14 @@ class DataImporter
   {
     foreach (explode("\n", file_get_contents($this->filePath)) as $index => $line) {
       if ($index > 1) {
-        UploadImageJob::dispatch($this->parseLine($line));
-        Log::info('dispatched ImportImage job for "' . $line . '"');
+        try {
+            UploadImageJob::dispatch($this->parseLine($line));
+            Log::info('dispatched ImportImage job for ' . $line);
+        } catch (\Exception $e) {
+            Log::info('error dispatching ImportImage job for ' . $line);
+            Log::info($e);
+        }
+
       }
     }
   }
@@ -60,7 +66,7 @@ class DataImporter
    */
   public function parseLine($line)
   {
-    $lineArr = explode(',', $line);
+    $lineArr = str_getcsv($line);
     $categoryArray = [];
     $categoryIndex = 2;
 

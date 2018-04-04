@@ -1,3 +1,5 @@
+@import "colors";
+
 header {
   background-color: rgba(0,0,0,.5);
   color: $light;
@@ -13,7 +15,7 @@ header {
   z-index: 100;
 
   @media screen and (max-width: 500px) {
-    height: 3rem;
+    height: 2.5rem;
   }
 
   .logo {
@@ -29,12 +31,29 @@ header {
     @media screen and (max-width: 500px){
       font-size: .8rem;
       width: 129px;
+      padding-top: .6rem;
     }
   }
 
   ul {
     @media screen and (max-width: 650px) {
       display: none;
+    }
+  }
+
+  ul.active {
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    right: 0;
+    top: 2.5rem;
+    padding: 1rem;
+    width: 100%;
+    display: block;
+
+    li {
+      display: block;
+      list-style: none;
+      padding: .4rem 0;
     }
   }
 

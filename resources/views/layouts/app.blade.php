@@ -8,14 +8,15 @@
   <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 </head>
 <body>
+<div id="app">
 @include('partials.header')
 
-<div id="app" class="container">
+<div class="container">
   @yield('content')
 </div>
 
 @include('partials.footer')
-
+</div>
 <script src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>

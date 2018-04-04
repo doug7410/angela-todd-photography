@@ -58,9 +58,6 @@
         const last = this.images.pop()
         this.images = [last].concat(this.images)
       }
-    },
-    mounted() {
-      console.log(this.images)
     }
   }
 </script>
