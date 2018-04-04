@@ -19,10 +19,10 @@
     </transition-group>
     <div class='carousel-controls' :style="{height: `${carouselHeight}px`}">
       <a href="#" @click.prevent="previous">
-        <img src="../../images/06_left.png" class='carousel-controls__button' />
+        <img src="../../images/06_left.png" class='carousel-controls__button prev' />
       </a>
       <a href="#" @click.prevent="next">
-        <img src="../../images/05_right.png" class='carousel-controls__button' />
+        <img src="../../images/05_right.png" class='carousel-controls__button next' />
       </a>
     </div>
   </div>
@@ -44,7 +44,7 @@
       },
       carouselHeight() {
         if(window.innerWidth < 670) {
-          return window.innerHeight / 2
+          return window.innerHeight * .66
         }
         return window.innerHeight
       }
@@ -99,6 +99,17 @@
 
     img {
       cursor: pointer;
+    }
+
+    @media screen and (max-width: 480px) {
+      img {
+        width: 60%;
+        height: 60%;
+      }
+
+      .carousel-controls__button.next {
+        float: right;
+      }
     }
   }
 </style>
