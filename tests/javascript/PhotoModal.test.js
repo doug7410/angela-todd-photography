@@ -10,7 +10,7 @@ beforeEach(() => {
       images: [
         {path: 'foo.jpg', id: 1},
         {path: 'bar.jpg', id: 3},
-        {path: 'baz.jpg', id: 5, caption: 'the great baz', meta_data: '{"lens":"40", "camera":"cannon"}'}
+        {path: 'baz.jpg', id: 5, caption: 'the great baz', meta_data: '{"SomeLens":"40", "SomeCamera":"cannon"}'}
       ]
     },
     attachToDocument: true
@@ -130,7 +130,7 @@ describe('PhotoModal.vue', () => {
   it('sets the image meta data in the info', () => {
     const info = wrapper.find('.modal-info')
     info.trigger('click')
-    expect(wrapper.find('.meta-data').html()).to.contain('<th>lens</th><td>40</td>')
-    expect(wrapper.find('.meta-data').html()).to.contain('<th>camera</th><td>cannon</td>')
+    expect(wrapper.find('.meta-data').html()).to.contain('<th>Some Lens</th><td>40</td>')
+    expect(wrapper.find('.meta-data').html()).to.contain('<th>Some Camera</th><td>cannon</td>')
   })
 })

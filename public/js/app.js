@@ -411,6 +411,7 @@ function applyToTag (styleElement, obj) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_metaDataParser__ = __webpack_require__(30);
 //
 //
 //
@@ -442,6 +443,7 @@ function applyToTag (styleElement, obj) {
 //
 //
 //
+
 
 
 
@@ -521,7 +523,7 @@ function applyToTag (styleElement, obj) {
     },
     metaDataFields: function metaDataFields() {
       if (this.currentImage.meta_data) {
-        return JSON.parse(this.currentImage.meta_data);
+        return Object(__WEBPACK_IMPORTED_MODULE_1__utils_metaDataParser__["a" /* default */])(JSON.parse(this.currentImage.meta_data));
       }
       return [];
     }
@@ -12259,7 +12261,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.modal {\n  position: fixed;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  background-color: rgba(255, 255, 255, 0.8);\n  z-index: 9999;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n}\n.modal-content {\n    position: relative;\n    background: #ffffff center no-repeat;\n    width: 80%;\n    height: 95%;\n    z-index: 99999;\n    border: solid 1px #93979B;\n    -ms-flex-item-align: center;\n        align-self: center;\n    border-radius: 3px;\n    background-size: contain;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.modal-nav {\n    -ms-flex-item-align: center;\n        align-self: center;\n    font-size: 5rem;\n    color: #93979B;\n}\n.modal-info {\n    position: absolute;\n    bottom: 1rem;\n    right: 1rem;\n    color: #93979B;\n    font-size: 1.8rem;\n}\n.modal-close {\n    position: absolute;\n    top: 1rem;\n    color: #93979B;\n    font-size: 2.5rem;\n    font-weight: bold;\n    cursor: pointer;\n}\n.modal .fa-angle-right, .modal .fa-angle-left {\n    cursor: pointer;\n}\n.modal .meta-data {\n    background-color: rgba(255, 255, 255, 0.75);\n    width: 50%;\n    border: solid 1px #93979B;\n    padding: 1rem 1.8rem;\n    min-height: 50%;\n    max-height: 70%;\n    border-radius: 3px;\n    -ms-flex-item-align: center;\n        align-self: center;\n    overflow: scroll;\n    position: relative;\n    color: #000;\n}\n.modal .meta-data h2 {\n      text-transform: uppercase;\n      margin: 0 0 .3rem 0;\n}\n.modal .meta-data table {\n      margin-top: .5rem;\n      width: 100%;\n      font-size: .9rem;\n}\n.modal .meta-data th, .modal .meta-data td {\n      border: solid 1px #93979B;\n      padding: .5rem;\n}\n.modal .meta-data th {\n      text-align: right;\n}\n.modal .meta-data-close {\n      position: absolute;\n      top: 1rem;\n      right: 1rem;\n      font-size: 1.5rem;\n      cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n.modal {\n  position: fixed;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  background-color: rgba(255, 255, 255, 0.8);\n  z-index: 9999;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n}\n.modal-content {\n    position: relative;\n    background: #ffffff center no-repeat;\n    width: 80%;\n    height: 95%;\n    z-index: 99999;\n    border: solid 1px #93979B;\n    -ms-flex-item-align: center;\n        align-self: center;\n    border-radius: 3px;\n    background-size: contain;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.modal-nav {\n    -ms-flex-item-align: center;\n        align-self: center;\n    font-size: 5rem;\n    color: #93979B;\n}\n.modal-info {\n    position: absolute;\n    bottom: 1rem;\n    right: 1rem;\n    color: #93979B;\n    font-size: 1.8rem;\n}\n.modal-close {\n    position: absolute;\n    top: 1rem;\n    color: #93979B;\n    font-size: 2.5rem;\n    font-weight: bold;\n    cursor: pointer;\n}\n.modal .fa-angle-right, .modal .fa-angle-left {\n    cursor: pointer;\n}\n.modal .meta-data {\n    background-color: rgba(255, 255, 255, 0.75);\n    width: 50%;\n    border: solid 1px #93979B;\n    padding: 1rem 1.8rem;\n    min-height: 50%;\n    max-height: 70%;\n    border-radius: 3px;\n    -ms-flex-item-align: center;\n        align-self: center;\n    overflow: scroll;\n    position: relative;\n    color: #000;\n}\n.modal .meta-data h2 {\n      text-transform: uppercase;\n      margin: 0 0 .3rem 0;\n}\n.modal .meta-data table {\n      margin-top: .5rem;\n      width: 100%;\n      font-size: .9rem;\n}\n.modal .meta-data th, .modal .meta-data td {\n      border: solid 1px #93979B;\n      padding: .5rem;\n      max-width: 1px;\n      word-wrap: break-word;\n}\n.modal .meta-data th {\n      text-align: right;\n}\n.modal .meta-data-close {\n      position: absolute;\n      top: 1rem;\n      right: 1rem;\n      font-size: 1.5rem;\n      cursor: pointer;\n}\n", ""]);
 
 // exports
 
@@ -29772,6 +29774,28 @@ module.exports = "/images/05_right.png?5f551ea5677a521253afdbec89a142ad";
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = (function (data) {
+    Object.keys(data).forEach(function (label) {
+
+        var newLabel = label.replace(/([A-Z])/g, ' $1').replace(/^ /, '');
+
+        data[newLabel] = data[label];
+
+        delete data[label];
+    });
+
+    return data;
+});
 
 /***/ })
 /******/ ]);

@@ -6,9 +6,9 @@
         <i class="fas fa-bars hamburger"></i>
         <ul>
             <li><a href="/" class="active">Home</a></li>
-            <li><a href="/">Portfolio</a></li>
-            <li><a href="/">Blog</a></li>
-            <li><a href="/">Shop</a></li>
+            <li><a href="/#portfolio">Portfolio</a></li>
+            {{--<li><a href="/">Blog</a></li>--}}
+            {{--<li><a href="/">Shop</a></li>--}}
             <li><a href="/">About</a></li>
         </ul>
     </nav>

@@ -3,7 +3,7 @@
 @section('content')
 <carousel slides="{{$slides}}"></carousel>
 
-<div class="portfolio">
+<div class="portfolio" id="portfolio">
   <h1>Portfolio</h1>
   <div class="items">
     @foreach($categories as $category)

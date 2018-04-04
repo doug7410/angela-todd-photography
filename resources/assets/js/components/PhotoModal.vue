@@ -31,6 +31,7 @@
 
 <script>
   import { find, findIndex } from 'lodash'
+  import metaDataParser from '../utils/metaDataParser'
 
   export default {
     name: 'photo-modal',
@@ -95,7 +96,7 @@
       },
       metaDataFields() {
         if(this.currentImage.meta_data) {
-          return JSON.parse(this.currentImage.meta_data)
+          return metaDataParser(JSON.parse(this.currentImage.meta_data))
         }
         return []
       }
@@ -187,6 +188,8 @@
       th, td {
         border: solid 1px $dark;
         padding: .5rem;
+        max-width: 1px;
+        word-wrap: break-word;
       }
 
       th {
