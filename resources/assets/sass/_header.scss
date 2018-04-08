@@ -2,6 +2,9 @@
 
 header {
   background-color: rgba(0,0,0,.5);
+  @media screen and (max-width: 650px) {
+    background-color: $dark;
+  }
   color: $light;
   display: flex;
   justify-content: space-between;
@@ -37,24 +40,30 @@ header {
 
   ul {
     @media screen and (max-width: 650px) {
-      display: none;
+      background-color: rgba(0,0,0,0.5);
+      position: absolute;
+      right: 0;
+      top: 2.5rem;
+      width: 100%;
+      display: block;
+      overflow-y: hidden;
+      height: 0;
+      transition: all .3s cubic-bezier(0, 1, 0.5, 1);
+      li {
+        display: block;
+        list-style: none;
+        padding: .9rem 1.7rem;
+        text-align: right;
+      }
+
+      a {
+        font-size: 1.2rem;
+      }
     }
   }
 
   ul.active {
-    background-color: rgba(0,0,0,0.5);
-    position: absolute;
-    right: 0;
-    top: 2.5rem;
-    padding: 1rem;
-    width: 100%;
-    display: block;
-
-    li {
-      display: block;
-      list-style: none;
-      padding: .4rem 0;
-    }
+    height: 150px;
   }
 
   .hamburger {
