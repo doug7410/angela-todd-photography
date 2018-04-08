@@ -3,7 +3,7 @@
     <img src="{{ asset('/images/AngelaToddPhotography.svg') }}" alt="logo">
   </a>
     <nav>
-        <a @click.prevent="toggleMenu()" href="#"><i class="fas fa-bars hamburger"></i></a>
+        <a @click.prevent="toggleMenu()" href="#" class="toggle-menu"><i class="fas fa-bars hamburger"></i></a>
         <ul ref="menu">
             <li><a href="/" class="active">Home</a></li>
             <li><a href="/#portfolio" @click="closeMenuIfActive()">Portfolio</a></li>
