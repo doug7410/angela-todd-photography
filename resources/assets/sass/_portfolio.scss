@@ -16,7 +16,7 @@
 
   .items {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
 
     @media screen and (max-width: 1119px) and (min-width: 451px) {
       grid-template-columns: 1fr 1fr;
@@ -37,7 +37,7 @@
     display: block;
 
     @media screen and (max-width: 480px) {
-      height: 20rem;
+      height: 15rem;
     }
 
     img {
