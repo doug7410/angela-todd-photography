@@ -1,9 +1,9 @@
 <template>
-  <div class="modal" v-if="initialImageId">
+  <div class="modal" v-show="initialImageId">
     <span class="modal-nav" href="#" @click="previous()">
       <i class="fas fa-angle-left prev-image"></i>
     </span>
-    <div class="modal-content" :style="{backgroundImage: `url(${currentImagePath})`}">
+    <div class="modal-content" ref="modal" :style="{backgroundImage: `url(${currentImagePath})`}">
       <div v-if="showInfo" class="meta-data">
         <h2>Photo Info</h2>
         <small>HDR photo data may not be accurate</small>
@@ -32,6 +32,7 @@
 <script>
   import { find, findIndex } from 'lodash'
   import metaDataParser from '../utils/metaDataParser'
+  import Hammer from 'hammerjs';
 
   export default {
     name: 'photo-modal',
@@ -79,6 +80,11 @@
       closeInfo() {
         this.showInfo = false
       }
+    },
+    mounted() {
+      this.hammer = new Hammer(this.$refs.modal, { threshold: 0, pointers: 0 });
+      this.hammer.on('swipeleft', () => this.next());
+      this.hammer.on('swiperight', () => this.previous());
     },
     computed: {
       currentImageIndex() {
