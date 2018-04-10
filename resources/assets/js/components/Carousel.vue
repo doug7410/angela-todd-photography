@@ -1,5 +1,5 @@
 <template>
-  <div class='carousel-container'>
+  <div class='carousel-container' ref="carousel">
     <transition-group
         class='carousel'
         :style="{
@@ -29,11 +29,14 @@
 </template>
 
 <script>
+  import Hammer from 'hammerjs';
+
   export default {
     data() {
       return {
         images: JSON.parse(this.slides),
-        autoPlayTimer: null
+        autoPlayTimer: null,
+        hammer: null
       }
     },
     props: {
@@ -68,12 +71,16 @@
         this.previous()
       },
       clearAutoPlay() {
-        window.clearInterval(this.autoPlayTimer);
+        if(this.autoPlayTimer) {
+          window.clearInterval(this.autoPlayTimer);
+        }
       }
     },
     mounted() {
-      this.autoPlayTimer = setInterval(() => this.next(), 4000
-    )
+      this.autoPlayTimer = setInterval(() => this.next(), 4000);
+      this.hammer = new Hammer(this.$refs.carousel, { threshold: 0, pointers: 0 });
+      this.hammer.on('swipeleft', () => this.navigateNext());
+      this.hammer.on('swiperight', () => this.navigatePrev());
     },
     destroyed() {
       this.clearAutoPlay()
