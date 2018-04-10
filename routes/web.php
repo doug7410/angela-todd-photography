@@ -20,3 +20,7 @@ use Illuminate\Support\Facades\Storage;
 Route::get('/', 'HomeController@index');
 
 Route::get('/category/{id}', 'CategoryController@show');
+
+Route::get('/about', function () {
+    return view('about');
+});

@@ -4,8 +4,8 @@
     </div>
     <div class="social">
         <ul>
-            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-            <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
+            <li><a href="https://www.instagram.com/texpatstarling/"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://www.pinterest.com/texpatstarling/"><i class="fab fa-pinterest"></i></a></li>
         </ul>
     </div>
     <nav>
@@ -14,7 +14,7 @@
             <li><a href="/#portfolio">Portfolio</a></li>
             {{--<li><a href="#">Blog</a></li>--}}
             {{--<li><a href="#">Shop</a></li>--}}
-            <li><a href="#">About</a></li>
+            <li><a href="/about">About</a></li>
         </ul>
     </nav>
     <div class="copy">

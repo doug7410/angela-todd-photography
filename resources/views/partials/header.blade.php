@@ -9,7 +9,7 @@
             <li><a href="/#portfolio" @click="closeMenuIfActive()">Portfolio</a></li>
             {{--<li><a href="/">Blog</a></li>--}}
             {{--<li><a href="/">Shop</a></li>--}}
-            <li><a href="/">About</a></li>
+            <li><a href="/about">About</a></li>
         </ul>
     </nav>
 </header>

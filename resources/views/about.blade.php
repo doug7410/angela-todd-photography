@@ -2,14 +2,17 @@
 
 @section('content')
 <div class="about">
-  <img src="images/angela.jpg" alt="Angela Todd">
+  <img src="images/angelaBW.jpg" alt="Angela Todd">
   <h1>About Me</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dolorem eius eum laudantium, necessitatibus repellendus tempore unde. At blanditiis doloribus, enim error ex magni molestias officiis perspiciatis porro totam voluptatibus.</p>
-  <h2>My inspiration</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet animi consequatur dolores doloribus eligendi eos et, fugiat in magni pariatur placeat quasi quod quos repellat sapiente veniam vitae voluptatem.</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet animi consequatur dolores doloribus eligendi eos et, fugiat in magni pariatur placeat quasi quod quos repellat sapiente veniam vitae voluptatem.</p>
-  <h2>My gear</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias atque corporis dicta dolorem earum eius magni, numquam placeat provident quaerat similique sint, tenetur, voluptas voluptatibus voluptatum? Animi consequuntur labore vel.</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias atque corporis dicta dolorem earum eius magni, numquam placeat provident quaerat similique sint, tenetur, voluptas voluptatibus voluptatum? Animi consequuntur labore vel.</p>
+  <p>
+    I love light. I love how light changes how we process the world around us, while it manipulates our emotions inside
+    us. That love got me into photography and motivates me to this day, because photography is nothing less than
+    capturing the fastest thing in the universe.
+  </p>
+  <p>
+    I want my photography to help me understand light better and to capture
+    the emotion of the light. My photography is not meant to be a faithful recreation of what my eyes saw, but a
+    faithful recreation of what I experienced emotionally in that moment.
+  </p>
 </div>
 @endsection

@@ -1,8 +1,17 @@
 .about {
   text-align: center;
+  margin-top: 4rem;
+
+  @media screen and (max-width: 600px){
+    margin-top: 1rem;
+  }
 
   img {
-    max-width: 65%;
+    @media screen and (max-width: 600px){
+      width: 95%;
+    }
+
+    width: 600px;
     border: solid 1px $dark;
     margin-top: .5rem;
   }
@@ -21,9 +30,18 @@
   }
 
   p {
+    @media screen and (max-width: 600px){
+      max-width: 90%;
+      margin: .7rem auto;
+      font-size: 1.1rem;
+      line-height: 1.2;
+    }
+
     max-width: 65%;
     text-align: left;
     display: block;
     margin: 1rem auto;
+    font-size: 1.4rem;
+    line-height: 1.4;
   }
 }
