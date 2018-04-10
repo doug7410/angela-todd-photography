@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="about">
-  <img src="{{ asset('images/angelaBW.jpg') }}" alt="Angela Todd">
+  <img src="{{ asset('images/AngelaBW.jpg') }}" alt="Angela Todd">
   <h1>About Me</h1>
   <p>
     I love light. I love how light changes how we process the world around us, while it manipulates our emotions inside
