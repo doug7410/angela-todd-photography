@@ -32,20 +32,41 @@ class DataImporterTest extends TestCase
         $importer->createCategories();
 
         $this->assertDatabaseHas('categories',
-            ['name' => 'landscape', 'description' => 'Landscape Photos', 'sort_order' => 1]);
+            [
+                'name' => 'landscape',
+                'description' => 'Landscape Photos',
+                'sort_order' => 1
+            ]
+        );
         $this->assertDatabaseHas('categories',
-            ['name' => 'portrait', 'description' => 'Some Great Portraits', 'sort_order' => 2]);
+            [
+                'name' => 'portrait',
+                'description' => 'Some Great Portraits',
+                'sort_order' => 2
+            ]);
         $this->assertDatabaseHas('categories',
-            ['name' => 'black and white', 'description' => 'It\'s all about the lighting', 'sort_order' => 3]);
-        $this->assertDatabaseHas('categories', ['name' => 'HDR', 'description' => 'Super High Def', 'sort_order' => 4]);
+            [
+                'name' => 'black and white',
+                'description' => 'It\'s all about the lighting',
+                'sort_order' => 3
+            ]);
+        $this->assertDatabaseHas('categories', [
+            'name' => 'HDR',
+            'description' => 'Super High Def',
+            'sort_order' => 4
+        ]);
         $this->assertDatabaseHas('categories',
-            ['name' => 'Still Life', 'description' => 'Be still', 'sort_order' => 5]);
+            [
+                'name' => 'Still Life',
+                'description' => 'Be still',
+                'sort_order' => 5
+            ]);
     }
 
     /**
      * @test
      */
-    public function does_not_create_categories_if_they_already_exist()
+    public function doesNotCreateCategoriesIfTheyAlreadyExist()
     {
         factory(Category::class)->create(['name' => 'landscape']);
         $importer = new DataImporter($this->data);
@@ -59,7 +80,7 @@ class DataImporterTest extends TestCase
     /**
      * @test
      */
-    public function created_a_queue_job_for_each_image()
+    public function createsQueueJobForEachImage()
     {
         Queue::fake();
         $importer = new DataImporter($this->data);

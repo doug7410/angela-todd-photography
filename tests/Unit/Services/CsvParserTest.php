@@ -25,7 +25,7 @@ class CsvParserTest extends TestCase
     /**
      * @test
      */
-    public function parses_a_line_to_the_correct_format_for_the_ImportImage_job()
+    public function parsesEachlineToTheCorrectFormatForImportImageJob()
     {
         $parser = new CsvParser($this->sampleFile);
         $data = $parser->dataForUploadImageJobs();
