@@ -40,12 +40,12 @@ class DataImporter
      */
     public function dispatchImportImageJobs()
     {
-        foreach ($this->data->dataForUploadImageJobs() as $index => $line) {
+        foreach ($this->data->dataForUploadImageJobs() as $imageData) {
             try {
-                UploadImageJob::dispatch($line);
-                Log::info('dispatched ImportImage job for ' . json_encode($line));
+                UploadImageJob::dispatch($imageData);
+                Log::info('dispatched ImportImage job for ' . json_encode($imageData));
             } catch (\Exception $e) {
-                Log::info('error dispatching ImportImage job for ' . json_encode($line));
+                Log::info('error dispatching ImportImage job for ' . json_encode($imageData));
                 Log::info($e);
             }
         }
