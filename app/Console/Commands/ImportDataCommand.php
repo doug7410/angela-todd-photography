@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Services\CsvParser;
 use App\Services\DataImporter;
 use Illuminate\Console\Command;
 
@@ -21,15 +22,6 @@ class ImportDataCommand extends Command
      */
     protected $description = 'Import images, categories, and slider data to website from CSV file. ';
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
 
     /**
      * Execute the console command.
@@ -38,8 +30,9 @@ class ImportDataCommand extends Command
      */
     public function handle()
     {
-      $importer = new DataImporter(__DIR__.'/../../../../For the Website/data.csv');
-      $importer->createCategories();
-      $importer->dispatchImportImageJobs();
+        $data = new CsvParser(config('dataImporter.csvPath'));
+        $importer = new DataImporter($data);
+        $importer->createCategories();
+        $importer->dispatchImportImageJobs();
     }
 }
