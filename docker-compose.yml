@@ -1,0 +1,24 @@
+version: "3"
+services:
+
+  laravel:
+    image: hitalos/laravel
+    ports:
+      - "8080:80"
+    networks:
+      - backend
+    volumes:
+      - $PWD:/var/www
+  mysql:
+    image: mysql:5
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+    volumes:
+      - ~/angie-data:/var/lib/mysql
+    networks:
+      - backend
+
+networks:
+  backend:
