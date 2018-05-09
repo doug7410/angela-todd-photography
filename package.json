@@ -1,7 +1,7 @@
 {
     "private": true,
     "scripts": {
-        "test:js": "mocha-webpack --webpack-config webpack.config.js --require tests/javascript/setup.js tests/javascript/*.test.js ",
+        "test:js": "cross-env NODE_ENV=test mocha-webpack --webpack-config webpack.config.js --require tests/javascript/setup.js tests/javascript/*.test.js ",
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",

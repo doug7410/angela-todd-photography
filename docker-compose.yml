@@ -5,20 +5,19 @@ services:
     image: hitalos/laravel
     ports:
       - "8080:80"
-    networks:
-      - backend
+    links:
+      - mysql
     volumes:
       - $PWD:/var/www
   mysql:
-    image: mysql:5
+    image: mysql:5.7.22
     ports:
-      - "3306:3306"
+      - "33060:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: my-secret-pw
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: angie
     volumes:
-      - ~/angie-data:/var/lib/mysql
-    networks:
-      - backend
+      - angie_data
 
-networks:
-  backend:
+volumes:
+  angie_data:

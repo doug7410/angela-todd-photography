@@ -12,9 +12,6 @@ const app = new Vue({
         Carousel
     },
     methods: {
-        setCurrentImageId(id) {
-            this.currentImageId = id
-        },
         toggleMenu() {
             const menu = this.$refs.menu
             if (menu.classList.contains('active')) {
@@ -31,5 +28,3 @@ const app = new Vue({
         }
     }
 });
-
-export default app

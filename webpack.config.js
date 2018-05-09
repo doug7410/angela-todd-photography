@@ -1,8 +1,23 @@
 const nodeExternals = require('webpack-node-externals')
-const laravelMixWebpack = require('laravel-mix/setup/webpack.config')
-const merge = require('webpack-merge')
 
-module.exports = merge([laravelMixWebpack, {
+module.exports ={
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        use: 'vue-loader'
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}
+          }
+        ]
+      }
+    ]
+  },
   externals: [nodeExternals()],
   output: {
     devtoolModuleFilenameTemplate: '[absolute-resource-path]',
@@ -10,4 +25,3 @@ module.exports = merge([laravelMixWebpack, {
   },
   devtool: '#inline-cheap-module-source-map'
 }
-])

@@ -20,7 +20,7 @@ beforeEach(() => {
 describe('PhotoModal.vue', () => {
   it('does not show it when the initialImageId prop is null', () => {
     wrapper.setProps({initialImageId: null})
-    expect(wrapper.isEmpty()).to.equal(true)
+    expect(wrapper.isVisible()).to.equal(false)
   })
 
   it('is visible when the initialImageId prop is not null', () => {

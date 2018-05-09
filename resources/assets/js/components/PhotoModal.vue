@@ -36,6 +36,10 @@
 
   export default {
     name: 'photo-modal',
+    model: {
+      prop: 'initialImageId',
+      event: 'close:modal'
+    },
     data() {
       return {
         currentImageId: this.initialImageId,

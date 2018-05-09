@@ -8,15 +8,12 @@
     </div>
     <div class="items">
       @foreach($category->images as $image)
-        <a href="#" class="item" @click.prevent="setCurrentImageId({{$image->id}})">
+        <a href="#" class="item" @click.prevent="currentImageId = {{$image->id}}">
           <img src="{{$image->path}}" alt="{{$image->caption}}">
           <small>{{$image->caption}}</small>
         </a>
       @endforeach
     </div>
-    <photo-modal :images="{{json_encode($category->images->toArray())}}"
-                 @close:modal="() => setCurrentImageId(null)"
-                 :initial-image-id="currentImageId">
-    </photo-modal>
+    <photo-modal :images="{{json_encode($category->images->toArray())}}" v-model="currentImageId" />
   </div>
 @endsection
