@@ -8110,6 +8110,10 @@ timers-browserify@^2.0.4:
   dependencies:
     setimmediate "^1.0.4"
 
+tiny-slider@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/tiny-slider/-/tiny-slider-2.6.0.tgz#3e80023ac3e615fa5cad0f1d06919f8d9bd3c1f8"
+
 to-absolute-glob@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/to-absolute-glob/-/to-absolute-glob-0.1.1.tgz#1cdfa472a9ef50c239ee66999b662ca0eb39937f"
