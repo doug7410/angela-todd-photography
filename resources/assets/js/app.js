@@ -1,15 +1,17 @@
 import Vue from 'vue'
-import PhotoModal from './components/PhotoModal.vue'
 import Carousel from './components/Carousel.vue'
+import ImageList from './components/Category/ImageList'
 
-const app = new Vue({
+
+new Vue({
     el: '#app',
     data: {
-        currentImageId: null
+        modalVisible: false,
+        currentImage: null
     },
     components: {
-        PhotoModal,
-        Carousel
+        Carousel,
+        ImageList
     },
     methods: {
         toggleMenu() {

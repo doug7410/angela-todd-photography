@@ -24,3 +24,4 @@ Route::get('/category/{id}', 'CategoryController@show');
 Route::get('/about', function () {
     return view('about');
 });
+
