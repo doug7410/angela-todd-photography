@@ -5535,9 +5535,9 @@ node-status-codes@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/node-status-codes/-/node-status-codes-1.0.0.tgz#5ae5541d024645d32a58fcddc9ceecea7ae3ac2f"
 
-node@^9.8.0:
-  version "9.9.0"
-  resolved "https://registry.yarnpkg.com/node/-/node-9.9.0.tgz#b3bf2842641e23106d71a5332db6c786e6b747e4"
+node@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/node/-/node-10.0.0.tgz#d998340e4bbba200134c1b0376ef79810ca18adb"
   dependencies:
     node-bin-setup "^1.0.0"
 

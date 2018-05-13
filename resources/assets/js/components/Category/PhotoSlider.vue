@@ -25,6 +25,7 @@
 <script>
     import BaseSlider from '../BaseSlider'
     import MetaData from './MetaData'
+    import { debounce } from 'lodash'
 
     export default {
         name: "photo-slider",
@@ -33,10 +34,6 @@
                 type: Array,
                 required: true
             },
-            initialImageIndex: {
-                type: Number,
-                required: true
-            }
         },
         components: {
             BaseSlider,
@@ -48,13 +45,15 @@
                     .forEach(image => image.style.height = `${window.innerHeight * .925}px`);
             },
             handleResize() {
-                return _.debounce(this.setHeight, 250)
+                return debounce(this.setHeight, 250)
             }
         },
         mounted() {
             setTimeout(this.setHeight(), 100);
             window.addEventListener('resize', this.handleResize());
-            this.$parent.$parent.$on('openModalOnImage', index => this.$emit('slider:goTo', index))
+            this.$parent.$parent.$on('openModalOnImage', index => {
+                this.$emit('slider:goTo', index)
+            })
         },
         beforeDestroy: () => {
             window.removeEventListener('resize', this.handleResize())

@@ -12,7 +12,7 @@
                 <small>{{ image.caption }}</small>
             </a>
         </div>
-        <base-modal v-model="modalVisible" modal-background-color="#000">
+        <base-modal v-model="modalVisible" modal-background-color="#000" ref="modal">
             <photo-slider :images="images" :initial-image-index="currentImageIndex"/>
         </base-modal>
     </div>
@@ -27,12 +27,27 @@
         data() {
           return {
               modalVisible: false,
-              currentImageIndex: 0
+              currentImageIndex: 0,
+              scrollPosition: 0
           }
         },
         components: {
           BaseModal,
           PhotoSlider
+        },
+        watch: {
+          modalVisible(isVisible) {
+              if(isVisible) {
+                  this.scrollPosition = window.pageYOffset
+                  window.scrollTo(0, 300)
+                  document.querySelector('body').style.overflow = 'hidden';
+                  document.querySelector('body').style.height = '100%';
+              } else {
+                  window.scrollTo(0, this.scrollPosition)
+                  document.querySelector('body').style.overflow = '';
+                  document.querySelector('body').style.height = '';
+              }
+          }
         },
         props: {
             images: {
@@ -44,7 +59,7 @@
             openModal(imageIndex) {
                 this.modalVisible = true
                 this.$emit('openModalOnImage', imageIndex)
-            }
+            },
         },
     }
 </script>
