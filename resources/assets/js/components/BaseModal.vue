@@ -29,19 +29,18 @@
         methods: {
             closeModal() {
                 this.$emit('close:modal');
-            },
-            closeOnEscKey(e) {
-                if(e.key === 'Escape') {
-                    this.closeModal()
-                }
             }
         },
         mounted() {
-            window.addEventListener('keyup', this.closeOnEscKey)
+            const closeOnEscKey = (e) => {
+                if (e.key === 'Escape' && this.visible) {
+                    this.closeModal()
+                }
+            }
+
+            document.addEventListener('keyup', closeOnEscKey)
+            this.$once('hook:destroyed', () => document.removeEventListener('keyup', closeOnEscKey))
         },
-        beforeDestroy() {
-            window.removeEventListener('keyup', this.closeOnEscKey)
-        }
     }
 </script>
 

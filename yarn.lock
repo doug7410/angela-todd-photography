@@ -5420,10 +5420,6 @@ no-case@^2.2.0:
   dependencies:
     lower-case "^1.1.1"
 
-node-bin-setup@^1.0.0:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/node-bin-setup/-/node-bin-setup-1.0.6.tgz#4b5c9bb937ece702d7069b36ca78af4684677528"
-
 node-fetch-npm@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/node-fetch-npm/-/node-fetch-npm-2.0.2.tgz#7258c9046182dca345b4208eda918daf33697ff7"
@@ -5534,12 +5530,6 @@ node-sass@^4.7.2:
 node-status-codes@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/node-status-codes/-/node-status-codes-1.0.0.tgz#5ae5541d024645d32a58fcddc9ceecea7ae3ac2f"
-
-node@^10.0.0:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/node/-/node-10.0.0.tgz#d998340e4bbba200134c1b0376ef79810ca18adb"
-  dependencies:
-    node-bin-setup "^1.0.0"
 
 nodent-runtime@^3.0.3:
   version "3.2.1"
@@ -6251,6 +6241,10 @@ pngquant-bin@^4.0.0:
     bin-wrapper "^3.0.0"
     execa "^0.10.0"
     logalot "^2.0.0"
+
+portal-vue@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/portal-vue/-/portal-vue-1.3.0.tgz#479630547c12bc94200d3485d40f21368955f809"
 
 portfinder@^1.0.9:
   version "1.0.13"
