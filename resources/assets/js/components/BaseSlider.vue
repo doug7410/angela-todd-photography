@@ -17,6 +17,7 @@
                 controls: false,
                 arrowKeys: true,
                 nav: false,
+                loop: false
             });
             this.$parent.$on('slider:goTo', index => slider.goTo(index))
             this.$parent.$on('slider:goNext', () => slider.goTo('next'))

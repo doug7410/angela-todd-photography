@@ -6,8 +6,6 @@
 
 <script>
     import MetaData from './MetaData'
-    import { debounce } from 'lodash'
-
 
     export default {
         name: "photo-slide",
@@ -16,29 +14,7 @@
         },
         components: {
             MetaData
-        },
-        methods: {
-            setHeight() {
-                if(
-                    window.innerWidth <= 414 && window.innerHeight <= 736 ||
-                    window.innerWidth <= 736 && window.innerHeight <= 414
-                ) {
-                    this.$refs.image.style.height = `${window.innerHeight}px`
-                } else {
-                    this.$refs.image.style.height = `${window.innerHeight * .925}px`
-                }
-            },
-            handleResize() {
-                return debounce(this.setHeight, 250)
-            }
-        },
-        mounted() {
-            setTimeout(this.setHeight(), 100);
-            window.addEventListener('resize', this.handleResize());
-        },
-        beforeDestroy: () => {
-            window.removeEventListener('resize', this.handleResize())
-        },
+        }
     }
 </script>
 
