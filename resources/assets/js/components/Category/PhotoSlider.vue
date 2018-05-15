@@ -1,7 +1,7 @@
 <template>
     <div class="photo-slider">
         <base-slider ref="slider">
-            <photo-slide v-for="image in images" :key="image.id" :image="image" :style="{height: '400px'}"/>
+            <photo-slide v-for="image in images" :key="image.id" :image="image" />
         </base-slider>
         <a href="#" @click.prevent="$emit('slider:goPrev')" class="photo-slider__prev">
             <i class="fas fa-angle-left"></i>
@@ -32,18 +32,10 @@
         },
         methods: {
             setHeight() {
-                if (
-                    window.innerWidth <= 414 && window.innerHeight <= 736 ||
-                    window.innerWidth <= 736 && window.innerHeight <= 414
-                ) {
-                    Array.from(this.$refs.slider.$el.children).forEach(slide => {
-                        slide.style.height = `${window.innerHeight}px`
-                    })
-                } else {
-                    Array.from(this.$refs.slider.$el.children).forEach(slide => {
-                        slide.style.height = `${window.innerHeight * .925}px`
-                    })
-                }
+                const slides = Array.from(this.$refs.slider.$el.children)
+                const browserIsMobile = window.innerWidth <= 414 && window.innerHeight <= 736 || window.innerWidth <= 736 && window.innerHeight <= 414
+                const height = browserIsMobile ? window.innerHeight : window.innerHeight * .925
+                slides.forEach(slide => slide.style.height = `${height}px`)
             },
             handleResize() {
                 return debounce(this.setHeight, 250)

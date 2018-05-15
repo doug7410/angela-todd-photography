@@ -145,7 +145,8 @@
             items: 1,
             controls: false,
             arrowKeys: true,
-            nav: false
+            nav: false,
+            loop: false
         });
         this.$parent.$on('slider:goTo', function (index) {
             return slider.goTo(index);
@@ -486,15 +487,12 @@ var _this2 = this;
     },
     methods: {
         setHeight: function setHeight() {
-            if (window.innerWidth <= 414 && window.innerHeight <= 736 || window.innerWidth <= 736 && window.innerHeight <= 414) {
-                Array.from(this.$refs.slider.$el.children).forEach(function (slide) {
-                    slide.style.height = window.innerHeight + 'px';
-                });
-            } else {
-                Array.from(this.$refs.slider.$el.children).forEach(function (slide) {
-                    slide.style.height = window.innerHeight * .925 + 'px';
-                });
-            }
+            var slides = Array.from(this.$refs.slider.$el.children);
+            var browserIsMobile = window.innerWidth <= 414 && window.innerHeight <= 736 || window.innerWidth <= 736 && window.innerHeight <= 414;
+            var height = browserIsMobile ? window.innerHeight : window.innerHeight * .925;
+            slides.forEach(function (slide) {
+                return slide.style.height = height + 'px';
+            });
         },
         handleResize: function handleResize() {
             return Object(__WEBPACK_IMPORTED_MODULE_2_lodash__["debounce"])(this.setHeight, 250);
@@ -603,7 +601,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -24564,11 +24562,7 @@ var render = function() {
         "base-slider",
         { ref: "slider" },
         _vm._l(_vm.images, function(image) {
-          return _c("photo-slide", {
-            key: image.id,
-            style: { height: "400px" },
-            attrs: { image: image }
-          })
+          return _c("photo-slide", { key: image.id, attrs: { image: image } })
         })
       ),
       _vm._v(" "),
