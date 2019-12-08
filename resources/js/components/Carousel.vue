@@ -19,10 +19,10 @@
     </transition-group>
     <div class='carousel-controls' :style="{height: `${carouselHeight}px`}">
       <a href="#" @click.prevent="navigatePrev">
-        <img src="../../images/06_left.png" class='carousel-controls__button prev'/>
+        <img src="https://res.cloudinary.com/dsteinberg/image/upload/v1575669622/06_left.png" class='carousel-controls__button prev'/>
       </a>
       <a href="#" @click.prevent="navigateNext">
-        <img src="../../images/05_right.png" class='carousel-controls__button next'/>
+        <img src="https://res.cloudinary.com/dsteinberg/image/upload/v1575669622/05_right.png" class='carousel-controls__button next'/>
       </a>
     </div>
   </div>

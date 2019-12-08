@@ -11,12 +11,6 @@
 |
 */
 
-use App\Jobs\UploadImageJob;
-use Cloudinary\Uploader;
-use Illuminate\Filesystem\FilesystemManager;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Storage;
-
 Route::get('/', 'HomeController@index');
 
 Route::get('/category/{id}', 'CategoryController@show');
