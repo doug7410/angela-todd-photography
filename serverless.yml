@@ -5,10 +5,9 @@ provider:
     region: us-east-1
     runtime: provided
     environment:
-        # Laravel environment variables
         APP_STORAGE: '/tmp'
-        ASSET_URL: 'https://d4bhs6vck5x5h.cloudfront.net/assets'
-        MIX_URL: 'https://d4bhs6vck5x5h.cloudfront.net/assets'
+        ASSET_URL: 'https://dkgguvojp4x5v.cloudfront.net'
+        MIX_URL: 'https://dkgguvojp4x5v.cloudfront.net'
 
 plugins:
     - ./vendor/bref/bref
@@ -22,19 +21,13 @@ functions:
         events:
             -   http: 'ANY /'
             -   http: 'ANY /{proxy+}'
-    artisan:
-        handler: artisan
-        timeout: 120 # in seconds
-        layers:
-            - ${bref:layer.php-73} # PHP
-            - ${bref:layer.console} # The "console" layer
 resources:
     Resources:
         # The S3 bucket that stores the assets
         Assets:
             Type: AWS::S3::Bucket
             Properties:
-                BucketName: at-photography-aws.dougsteinberg.net
+                BucketName: at-photography
         # The policy that makes the bucket publicly readable
         AssetsBucketPolicy:
             Type: AWS::S3::BucketPolicy
@@ -45,4 +38,4 @@ resources:
                         -   Effect: Allow
                             Principal: '*' # everyone
                             Action: 's3:GetObject' # to read
-                            Resource: 'arn:aws:s3:::at-photography-aws.dougsteinberg.net/*' # things in the bucket
+                            Resource: 'arn:aws:s3:::at-photography/*' # things in the bucket
