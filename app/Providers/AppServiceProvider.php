@@ -14,7 +14,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // this is for Bref https://bref.sh/docs/frameworks/laravel.html
+        // Make sure the directory for compiled views exist
+        if (! is_dir(config('view.compiled'))) {
+            mkdir(config('view.compiled'), 0755, true);
+        }
     }
 
     /**
